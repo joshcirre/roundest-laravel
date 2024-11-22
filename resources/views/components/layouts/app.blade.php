@@ -30,8 +30,12 @@
         </main>
 
         <footer class="py-3 font-light text-center text-gray-500">
-            <a href="https://github.com/t3dotgg/1app5stacks" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/joshcirre/roundest-laravel" target="_blank" rel="noopener noreferrer">
                 GitHub
+            </a>
+            <br>
+            Inspired by the <a href="https://github.com/t3dotgg/1app5stacks" target="_blank" rel="noopener noreferrer">
+                1 App 5 Stacks Repo
             </a>
         </footer>
     </body>
