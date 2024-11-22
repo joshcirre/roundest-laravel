@@ -32,9 +32,7 @@ placeholder(
                         @endforeach
                     </div>
                 </div>
-    HTML
-    ,
-);
+HTML);
 
 with(function () {
     return [
