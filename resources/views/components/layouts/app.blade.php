@@ -16,8 +16,8 @@
                 <a href="/" class="text-3xl font-bold">
                     round<span class="text-red-500">est</span>
                     <span class="pl-2 text-2xl text-gray-400 font-extralight">
-                        (<a href="https://tallstack.dev" target="_blank" rel="noopener noreferrer"
-                            class="hover:underline">TALL Stack</a> &nbsp;Version)
+                        <p>(<a href="https://tallstack.dev" target="_blank" rel="noopener noreferrer"
+                                class="hover:underline">TALL Stack</a> &nbsp;Version)</p>
                     </span>
                 </a>
             </div>
