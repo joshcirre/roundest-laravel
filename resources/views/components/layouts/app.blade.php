@@ -18,8 +18,7 @@
                 </a>
                 <span class="flex items-baseline pt-1 pl-2 text-sm font-extralight text-gray-400">
                     <p>(<a href="https://tallstack.dev" target="_blank" rel="noopener noreferrer"
-                            class="hover:underline">TALL Stack</a>
-                        &nbsp;Version)
+                            class="hover:underline">TALL Stack</a> Version)
                     </p>
                 </span>
             </div>
