@@ -11,17 +11,19 @@
 <body
     class="flex flex-col justify-between min-h-screen antialiased text-white border-t-2 border-purple-600 min-w-screen bg-gray-950">
     <header class="px-8 py-4">
-        <div class="flex items-center justify-between">
-            <div class="flex items-baseline">
+        <div class="flex justify-between items-baseline">
+            <div class="flex items-center">
                 <a href="/" class="text-3xl font-bold">
                     round<span class="text-red-500">est</span>
-                    <span class="pl-2 text-2xl text-gray-400 font-extralight">
-                        <p>(<a href="https://tallstack.dev" target="_blank" rel="noopener noreferrer"
-                                class="hover:underline">TALL Stack</a> &nbsp;Version)</p>
-                    </span>
                 </a>
+                <span class="flex items-baseline pt-1 pl-2 text-sm font-extralight text-gray-400">
+                    <p>(<a href="https://tallstack.dev" target="_blank" rel="noopener noreferrer"
+                            class="hover:underline">TALL Stack</a>
+                        &nbsp;Version)
+                    </p>
+                </span>
             </div>
-            <nav class="flex flex-row items-center gap-8">
+            <nav class="flex flex-row gap-8 items-center">
                 <a href="/results" class="text-lg hover:underline">
                     Results
                 </a>
