@@ -11,37 +11,39 @@ state(['search' => '']);
 
 placeholder(
     <<<'HTML'
-                <div class="container px-4 py-8 mx-auto text-white">
-                    <div class="mb-6">
-                        <input type="text" class="px-4 py-2 w-full placeholder-gray-400 text-white rounded-lg bg-gray-800/40" placeholder="Search Pokémon...">
-                    </div>
-                    <div class="grid gap-4">
-                        @foreach(range(1, 10) as $i)
-                            <div class="flex gap-6 items-center p-6 rounded-lg shadow animate-pulse bg-gray-800/40">
-                                <div class="w-8 h-8 rounded bg-gray-700/40"></div>
-                                <div class="w-20 h-20 rounded bg-gray-700/40"></div>
-                                <div class="flex-grow">
-                                    <div class="mb-2 w-16 h-4 rounded bg-gray-700/40"></div>
-                                    <div class="w-32 h-6 rounded bg-gray-700/40"></div>
+                    <div class="container px-4 py-8 mx-auto text-white">
+                        <div class="mb-6">
+                            <input type="text" class="px-4 py-2 w-full placeholder-gray-400 text-white rounded-lg bg-gray-800/40" placeholder="Search Pokémon...">
+                        </div>
+                        <div class="grid gap-4">
+                            @foreach(range(1, 10) as $i)
+                                <div class="flex gap-6 items-center p-6 rounded-lg shadow animate-pulse bg-gray-800/40">
+                                    <div class="w-8 h-8 rounded bg-gray-700/40"></div>
+                                    <div class="w-20 h-20 rounded bg-gray-700/40"></div>
+                                    <div class="flex-grow">
+                                        <div class="mb-2 w-16 h-4 rounded bg-gray-700/40"></div>
+                                        <div class="w-32 h-6 rounded bg-gray-700/40"></div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="mb-2 w-16 h-8 rounded bg-gray-700/40"></div>
+                                        <div class="w-24 h-4 rounded bg-gray-700/40"></div>
+                                    </div>
                                 </div>
-                                <div class="text-right">
-                                    <div class="mb-2 w-16 h-8 rounded bg-gray-700/40"></div>
-                                    <div class="w-24 h-4 rounded bg-gray-700/40"></div>
-                                </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
-                </div>
 HTML);
 
 with(function () {
     return [
         'results' => Pokemon::query()
             ->when($this->search, function ($query, $search) {
-                $query
-                    ->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('dex_id', '=', (int) $search)
-                    ->orWhere('dex_id', 'like', $search . '%');
+                $query->where(function ($query) use ($search) {
+                    $query
+                        ->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($search) . '%'])
+                        ->orWhere('dex_id', '=', (int) $search)
+                        ->orWhere('dex_id', 'like', $search . '%');
+                });
             })
             ->selectRaw('*, up_votes, down_votes')
             ->orderByRaw('CASE WHEN up_votes + down_votes > 0 THEN up_votes / NULLIF(up_votes + down_votes, 0) * 100 ELSE 0 END DESC')
