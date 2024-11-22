@@ -2,5 +2,5 @@
 
 use Livewire\Volt\Volt;
 
-Volt::route('/', 'index');
-Volt::route('/results', 'results');
+Volt::route('/', 'index')->lazy();
+Volt::route('/results', 'results')->lazy();
